@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nale V3</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <!-- Firebase v8 -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+</head>
+<body class="theme-dark">
+  <!-- Animated background layers -->
+  <div class="bg layer gradient"></div>
+  <div class="bg layer orbs">
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <div class="scanline"></div>
+
+  <!-- Loader -->
+  <div id="splash" class="splash">
+    <div class="loader3d">
+      <div class="ring"></div>
+      <div class="ring delay"></div>
+      <div class="core">NALE V3</div>
+    </div>
+    <p class="boot-text">Initializing realtime link<span class="dots">...</span></p>
+  </div>
+
+  <!-- App Shell -->
+  <div class="shell glass">
+    <!-- Left: Participants -->
+    <aside class="pane left glass">
+      <header class="pane-head">
+        <h2>Participants</h2>
+        <div class="actions">
+          <button id="themeBtn" class="icon-btn" title="Toggle theme">🌓</button>
+          <button id="logoutBtn" class="icon-btn" title="Logout">⎋</button>
+        </div>
+      </header>
+      <div class="search">
+        <input id="searchUsers" type="text" placeholder="Search users…" />
+      </div>
+      <ul id="userList" class="list"></ul>
+    </aside>
+
+    <!-- Middle: Chat (filtered by selected user) -->
+    <main class="pane middle glass">
+      <header class="chat-head">
+        <div class="peer">
+          <div id="peerAvatar" class="avatar"></div>
+          <div class="meta">
+            <div id="peerName" class="title">Global Feed</div>
+            <div id="peerStatus" class="sub">All messages</div>
+          </div>
+        </div>
+        <div class="right">
+          <span class="chip live">LIVE</span>
+        </div>
+      </header>
+
+      <section id="messages" class="messages" aria-live="polite">
+        <div id="inlineLoader" class="inline-loader hidden">
+          <div class="spinner"></div>
+        </div>
+      </section>
+
+      <footer class="composer">
+        <input id="msgInput" type="text" maxlength="1000" placeholder="Type a message…" />
+        <button id="sendBtn" class="send" disabled>➤</button>
+      </footer>
+    </main>
+
+    <!-- Right: Current user details -->
+    <aside class="pane right glass">
+      <header class="pane-head">
+        <h2>Your Profile</h2>
+      </header>
+      <section class="profile">
+        <div id="meAvatar" class="avatar xl"></div>
+        <div class="me-meta">
+          <div id="meName" class="me-name">—</div>
+          <div id="meTime" class="me-time">—</div>
+        </div>
+      </section>
+      <section class="tips">
+        <h3>Tips</h3>
+        <ul>
+          <li>Press <kbd>Enter</kbd> to send.</li>
+          <li>Select User From the left to view messages</li>
+          <li>Use the 🌓 button to switch themes.</li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+  <!-- Join Dialog -->
+  <div id="join" class="join glass">
+    <div class="card">
+      <h1>Nale V3</h1>
+      <p>Enter Name to Proceed.</p>
+      <input id="nameInput" type="text" maxlength="15" placeholder="Your name" />
+      <button id="joinBtn" class="primary" disabled>Join</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+>
